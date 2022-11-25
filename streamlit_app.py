@@ -1,10 +1,16 @@
 import streamlit
-import pandas
+import snowflake.snowpark
+from snowflake.snowpark import Session
 
-streamlit.title('Pandas Dataframe')
-df = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-df = df.set_index('Fruit')
-# Let's put a pick list here so they can pick the fruit they want to include 
-select=streamlit.multiselect("Pick some fruits:", list(df.index),['Apple','Grapefruit'])
-show_df=df.loc[select]
-streamlit.dataframe(show_df)
+connection_parameters={
+  "account":"vw39252.us-east-2.aws",
+  "user":"Sudhan",
+  "password":"Sudhan@9596",
+  "role":"SYSADMIN",
+  "database":"TEST",
+  "schema":"SCH1"
+}
+
+session=Session.builder.configs(connection_parameters).create()
+df=session.table('NAME')
+streamlit.dataframe(df)
