@@ -3,7 +3,7 @@ import snowflake.snowpark
 from snowflake.snowpark import Session
 
 connection_parameters={
-  "account":"vw39252.us-east-2.aws",
+  "account":"ti05946.eu-west-1.aws",
   "user":"Sudhan",
   "password":"Sudhan@9596",
   "role":"SYSADMIN",
